@@ -1,0 +1,66 @@
+﻿@model List<Model.Entity.Convidado>
+@{
+    ViewBag.Title = "Buscar Por Código";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">Buscar convidados no sistema por churrasco</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h2 style="text-align:center; font-family:Arial; font-weight:700;">Buscar convidado por código do churrasco:</h2>
+                <fieldset>
+                    <div class="row" style="padding-bottom:8px;">
+
+                        <div class="form-group col-md-2">
+                            @Html.Label("Código  ", new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextBox("txtcodigo", null, new { @class = "form-control", @placeholder = "Código..." })
+                            </div>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </div>
+
+            <input class="btn btn-primary btn-lg" type="submit" value="Buscar" />
+
+            @Html.ActionLink("Voltar a Lista", "Index");
+
+        }
+    </div>
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Código do funcionário</th>
+        <th>Beber</th>
+        <th colspan="3">Operações</th>
+    </tr>
+    @foreach (var convidado in Model)
+    {
+        <tr>
+            <th>@convidado.IdConvidado</th>
+            <th>@convidado.Nome</th>
+            <th>@convidado.IdFuncionario</th>
+            <th>@convidado.Status</th>
+            <td><a class="btn btn-success" href="~/Convidado/Details/@convidado.IdConvidado"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+            <td><a class="btn btn-info" href="~/Convidado/Edit/@convidado.IdConvidado"><span class="fa fa-edit"></span></a></td>
+            <td><a class="btn btn-danger" href="~/Convidado/Delete/@convidado.IdConvidado"><span class="fa fa-book"></span></a></td>
+        </tr>
+    }
+    <tr></tr>
+</table>
+
+<div class="text-primary text-danger text-center">
+    @ViewBag.MessageEmpty;
+</div>
+
+
+
+

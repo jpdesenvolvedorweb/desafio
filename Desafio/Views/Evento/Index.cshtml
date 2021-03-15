@@ -1,0 +1,47 @@
+﻿@model List<Model.Entity.Evento>
+@{
+    ViewBag.Title = "Index";
+}
+
+<a href="">Relatórios</a>
+<h2 class="text-center text-success">Lista de Eventos</h2>
+<div class="well well-sm">
+    <a class="btn btn-primary" href="~/Evento/Create">Novo</a>
+</div>
+<table class="table table-hover table-striped">
+    <thead>
+
+        <tr class="bg-primary">
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Gasto com Comida</th>
+            <th>Gasto com Bebida</th>
+            <th>Gasto Total</th>
+            <th>Funcionários</th>
+            <th>Convidados</th>
+            <th>Data</th>
+            <th colspan="3">Operações</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var evento in Model)
+        {
+            <tr>
+                <td>@evento.IdEvento</td>
+                <td>@evento.Nome</td>
+                <td>@evento.GastoComida</td>
+                <td>@evento.GastoBebida</td>
+                <td>@evento.GastoTotal</td>
+                <td>@evento.TotalFuncionarios</td>
+                <td>@evento.TotalConvidados</td>
+                <td>@evento.DataEvento</td>
+                <td><a class="btn btn-success" href="~/Evento/Details/@evento.IdEvento"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                <td><a class="btn btn-info" href="~/Evento/Edit/@evento.IdEvento"><span class="fa fa-edit"></span></a></td>
+                <td><a class="btn btn-danger" href="~/Evento/Delete/@evento.IdEvento"><span class="fa fa-book"></span></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

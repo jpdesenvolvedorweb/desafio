@@ -1,0 +1,44 @@
+﻿@model Model.Entity.Evento
+@{
+    ViewBag.Title = Model.Nome;
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/">Dados do Evento</a></li>
+    <li class="active">@(Model.Nome)</li>
+</ol>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Descrição do Evento</div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Código :</dt>
+            <dd>@Model.IdEvento</dd>
+
+            <dt>Nome :</dt>
+            <dd>@Model.Nome</dd>
+
+            <dt>Gasto com Comida :</dt>
+            <dd>@Model.GastoComida</dd>
+
+            <dt>Gasto com Bebida :</dt>
+            <dd>@Model.GastoBebida</dd>
+
+            <dt>Gasto Total :</dt>
+            <dd>@Model.GastoTotal</dd>
+
+            <dt>Total de Funcionários :</dt>
+            <dd>@Model.TotalFuncionarios</dd>
+
+            <dt>Total de Convidados :</dt>
+            <dd>@Model.TotalConvidados</dd>
+
+            <dt>Data do Evento :</dt>
+            <dd>@Model.DataEvento</dd>
+
+        </dl>
+        <div class="form-actions">
+            |@Html.ActionLink("Voltar a Lista", "Index");
+        </div>
+    </div>
+</div>

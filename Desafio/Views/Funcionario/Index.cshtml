@@ -1,0 +1,38 @@
+﻿@model List<Model.Entity.Funcionario>
+@{
+    ViewBag.Title = "Lista de Funcionários";
+}
+
+<a href="">Relatórios</a>
+<h2 class="text-center text-success">Lista de Funcionários</h2>
+<div class="well well-sm">
+    <a class="btn btn-primary" href="~/Funcionario/Create">Novo</a>
+    <a class="btn btn-info" href="~/Funcionario/SearchFuncionario">Buscar</a>
+</div>
+<table class="table table-hover table-striped">
+    <thead>
+
+        <tr class="bg-primary">
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Evento</th>
+            <th>Status Beber</th>
+            <th colspan="3">Operações</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var func in Model)
+        {
+            <tr>
+                <td>@func.IdFuncionario</td>
+                <td>@func.Nome</td>
+                <td>@func.IdEvento</td>
+                <td>@func.Status</td>
+                <td><a class="btn btn-success" href="~/Funcionario/Details/@func.IdFuncionario"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                <td><a class="btn btn-info" href="~/Funcionario/Edit/@func.IdFuncionario"><span class="fa fa-edit"></span></a></td>
+                <td><a class="btn btn-danger" href="~/Funcionario/Delete/@func.IdFuncionario"><span class="fa fa-book"></span></a></td>
+            </tr>
+        }
+    </tbody>
+</table>
